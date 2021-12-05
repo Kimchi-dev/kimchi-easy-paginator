@@ -163,7 +163,7 @@ You can paginate with MySQL DataBase's SQL that like following Query.
 public class BoardController {
     
     @GetMapping("/board/list")
-    public ResponseEntity<List<Board>> lookUpBoardList(int currentPage) throws Throwable {
+    public ResponseEntity<List<Board>> lookUpBoardList(int currentPage) throws Exception {
         KimchiPaginator paginator = new KimchiPaginator();
 
         int currentPage = currentPage; //127764
