@@ -4,6 +4,8 @@ import me.kimchi.pagination.calculator.Calculator;
 import me.kimchi.pagination.constant.CalculateConstant;
 import me.kimchi.pagination.constant.PaginatorConstant;
 import me.kimchi.pagination.constant.PagingOption;
+import me.kimchi.pagination.exception.PagingExceptConstant;
+import me.kimchi.pagination.exception.PagingException;
 import me.kimchi.pagination.object.DefaultPaginationObject;
 import me.kimchi.pagination.object.PaginatedObject;
 import me.kimchi.pagination.object.PaginationObject;
@@ -51,6 +53,9 @@ public class DefaultPaginator extends AbstractDefaultPaginator {
     @Override
     public Paginator elastic() throws Exception {
         this.option = PagingOption.ELASTIC;
+        if(calculator == null) {
+            throw new PagingException(PagingExceptConstant.DO_INIT_FOR_CALCULATOR);
+        }
         this.calculator.applyOption(this.option);
         this.calculator.setting(object, false, false);
         return this;
@@ -59,6 +64,9 @@ public class DefaultPaginator extends AbstractDefaultPaginator {
     @Override
     public Paginator fixed() throws Exception {
         this.option = PagingOption.FIXED;
+        if(calculator == null) {
+            throw new PagingException(PagingExceptConstant.DO_INIT_FOR_CALCULATOR);
+        }
         this.calculator.applyOption(this.option);
         this.calculator.setting(object,false,false);
         return this;
@@ -67,7 +75,7 @@ public class DefaultPaginator extends AbstractDefaultPaginator {
     @Override
     public Paginator pre() throws Exception {
         if(this.option == null) {
-            throw new NullPointerException("Paging option cannot be null. You have to choice paging mode. ex) paginator.elastic() or paginator.fixed()");
+            throw new PagingException(PagingExceptConstant.OPTION_CANNOT_BE_NULL);
         }
         this.calculator.movePre(true);
         return this;
@@ -76,7 +84,7 @@ public class DefaultPaginator extends AbstractDefaultPaginator {
     @Override
     public Paginator next() throws Exception {
         if(this.option == null) {
-            throw new NullPointerException("Paging option cannot be null. You have to choice paging mode. ex) paginator.elastic() or paginator.fixed()");
+            throw new PagingException(PagingExceptConstant.OPTION_CANNOT_BE_NULL);
         }
         this.calculator.moveNext(true);
         return this;
@@ -84,7 +92,7 @@ public class DefaultPaginator extends AbstractDefaultPaginator {
 
     public ResultPaginator build() throws Exception {
         if(this.option == null) {
-            throw new NullPointerException("Paging option cannot be null. You can this paginator with call like that -> paginator.elastic().build().paginate()");
+            throw new PagingException(PagingExceptConstant.PROCEED_OPTION_AND_BUILD);
         }
         long start = System.currentTimeMillis();
 

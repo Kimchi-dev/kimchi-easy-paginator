@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public enum PaginatorConstant {
 
-    MYSQL_PAGING(100, "MySql Paging"),
+     MYSQL_PAGING(100, "MySql Paging"),
     ORACLE_PAGING(101, "Oracle Paging"),
     POSTGRESQL_PAGING(102, "PostgreSql Paging"),
     ;
@@ -17,7 +17,7 @@ public enum PaginatorConstant {
         this.description = description;
     }
 
-    public static PaginatorConstant getConstantByCode(final int target) throws Exception {
+    public PaginatorConstant getConstantByCode(final int target) throws Exception {
         PaginatorConstant constant = Arrays.stream(PaginatorConstant.values()).filter(c -> c.code == target)
                 .findFirst().get();
 
