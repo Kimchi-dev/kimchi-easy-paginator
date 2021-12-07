@@ -12,20 +12,15 @@ import me.kimchi.pagination.object.PaginationObject;
  */
 public class KimchiPaginator implements Paginator {
 
-    private Paginator paginator;
+    private AbstractDefaultPaginator paginator;
 
     public KimchiPaginator (){
         paginator = new DefaultPaginator();
     }
 
     @Override
-    public PagingOption getPagingOption() {
+    public PagingOption getPagingOption() throws Exception {
         return paginator.getPagingOption();
-    }
-
-    @Override
-    public void setPagingObject(PaginationObject object, PaginatorConstant constant) throws Exception {
-        paginator.setPagingObject(object, constant);
     }
 
     /**

@@ -6,13 +6,16 @@ import me.kimchi.pagination.constant.CalculateConstant;
 public class ElasticCalculator extends AbstractCommonCalculator{
 
     @Override
-    protected int calTotalStep(int totalPageCnt, int numSizePerPage) {
+    public final int calTotalStep(int totalPageCnt, int numSizePerPage) {
         int totalStep = (totalPageCnt / numSizePerPage) + (totalPageCnt % numSizePerPage == 0 ? 0 : 1);
+        if(totalStep == 0) {
+            return 1;
+        }
         return totalStep;
     }
 
     @Override
-    protected int calStartPage(int totalPageCnt, int currentPage, int numSizePerPage, int currentStep) throws Exception {
+    public final int calStartPage(int totalPageCnt, int currentPage, int numSizePerPage, int currentStep) throws Exception {
         if(currentPage > totalPageCnt) {
             throw new IllegalArgumentException("Illegal arguments ! current page cannot excess total page count.");
         }
@@ -27,7 +30,7 @@ public class ElasticCalculator extends AbstractCommonCalculator{
     }
 
     @Override
-    protected int calEndPage(int totalPageCnt, int currentPage, int numSizePerPage, int currentStep) {
+    public final int calEndPage(int totalPageCnt, int currentPage, int numSizePerPage, int currentStep) {
         if(currentPage > totalPageCnt) {
             throw new IllegalArgumentException("illegal arguments ! current page cannot excess total page count.");
         }
@@ -44,7 +47,7 @@ public class ElasticCalculator extends AbstractCommonCalculator{
     }
 
     @Override
-    protected int calCurrentStep(int totalPageCnt, int currentPage, int numSizePerPage) {
+    public final int calCurrentStep(int totalPageCnt, int currentPage, int numSizePerPage) {
         if(currentPage > totalPageCnt) {
             throw new IllegalArgumentException("illegal arguments ! current page cannot excess total page count.");
         }
@@ -58,7 +61,7 @@ public class ElasticCalculator extends AbstractCommonCalculator{
     }
 
     @Override
-    protected void calMove(PaginationObject object, AbstractCommonCalculator calculator, int currentStep, int totalStepCnt, int numSizePerPage) throws Exception {
+    public final void calMove(PaginationObject object, AbstractCommonCalculator calculator, int currentStep, int totalStepCnt, int numSizePerPage) throws Exception {
 
         if(currentStep < totalStepCnt) {
             object.ableToStep(false, true);

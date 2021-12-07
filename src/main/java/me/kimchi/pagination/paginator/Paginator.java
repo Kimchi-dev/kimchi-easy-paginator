@@ -6,9 +6,7 @@ import me.kimchi.pagination.object.PaginationObject;
 
 public interface Paginator {
 
-    PagingOption getPagingOption();
-
-    void setPagingObject(PaginationObject object, PaginatorConstant constant) throws Exception;
+    PagingOption getPagingOption() throws Exception;
 
     void init(int totalContentsCount, int numPerPage, int contentsPerPage, int currentPage, PaginatorConstant constant) throws Exception;
 

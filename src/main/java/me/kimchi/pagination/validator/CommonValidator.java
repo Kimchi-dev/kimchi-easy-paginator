@@ -9,8 +9,8 @@ public class CommonValidator {
         int[] target = integers;
 
         Arrays.stream(target).forEach(num -> {
-            if (num < 0) {
-                throw new InvalidParameterException("Parameter integers are cannot under 0.");
+            if (num < 1) {
+                throw new InvalidParameterException("Parameter integers are cannot under 1.");
             }
         });
 

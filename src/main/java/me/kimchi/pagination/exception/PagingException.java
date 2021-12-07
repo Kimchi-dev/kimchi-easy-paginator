@@ -1,5 +1,7 @@
 package me.kimchi.pagination.exception;
 
+import me.kimchi.pagination.constant.PagingExceptConstant;
+
 public class PagingException extends RuntimeException{
 
     private PagingExceptConstant constant;
@@ -15,5 +17,9 @@ public class PagingException extends RuntimeException{
 
     public int getCode() {
         return this.constant.getECode();
+    }
+    
+    public PagingExceptConstant getConstant() {
+        return this.constant;
     }
 }

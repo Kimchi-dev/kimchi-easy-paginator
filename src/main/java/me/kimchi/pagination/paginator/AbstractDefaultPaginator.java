@@ -10,7 +10,6 @@ public abstract class AbstractDefaultPaginator implements Paginator {
 
     private double resultTime;
 
-    @Override
     public final void setPagingObject(PaginationObject object, PaginatorConstant constant) throws Exception {
         setPagingObject(object);
         validateAndInitializeConstant(constant);

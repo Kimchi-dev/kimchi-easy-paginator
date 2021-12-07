@@ -1,6 +1,8 @@
 package me.kimchi.pagination.calculator;
 
 import me.kimchi.pagination.constant.PagingOption;
+import me.kimchi.pagination.constant.PagingExceptConstant;
+import me.kimchi.pagination.exception.PagingException;
 import me.kimchi.pagination.paginator.Paginator;
 import me.kimchi.pagination.constant.PaginatorConstant;
 
@@ -23,10 +25,9 @@ public class AppropriateCalculatorProvider {
         } else if(constant.isSameConstant(PaginatorConstant.ORACLE_PAGING)) {
             return new DefaultCalculator(new IndexCalculator.OracleIndexCalculator());
         } else if (constant.isSameConstant(PaginatorConstant.POSTGRESQL_PAGING)) {
-            return new DefaultCalculator((new IndexCalculator.OracleIndexCalculator()));
+            return new DefaultCalculator((new IndexCalculator.PostgreSqlIndexCalculator()));
         }
-
-        return null;
+        throw new PagingException(PagingExceptConstant.NOT_SUPPORTED_CONSTANT);
     }
 
     public AbstractCommonCalculator findCalculatorByOption(PagingOption option) throws Exception{

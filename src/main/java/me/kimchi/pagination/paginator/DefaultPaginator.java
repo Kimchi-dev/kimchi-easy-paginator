@@ -4,7 +4,7 @@ import me.kimchi.pagination.calculator.Calculator;
 import me.kimchi.pagination.constant.CalculateConstant;
 import me.kimchi.pagination.constant.PaginatorConstant;
 import me.kimchi.pagination.constant.PagingOption;
-import me.kimchi.pagination.exception.PagingExceptConstant;
+import me.kimchi.pagination.constant.PagingExceptConstant;
 import me.kimchi.pagination.exception.PagingException;
 import me.kimchi.pagination.object.DefaultPaginationObject;
 import me.kimchi.pagination.object.PaginatedObject;
@@ -23,6 +23,9 @@ public class DefaultPaginator extends AbstractDefaultPaginator {
 
     @Override
     public PagingOption getPagingOption() {
+        if(this.option == null) {
+            throw new PagingException(PagingExceptConstant.PROCEED_OPTION_AND_BUILD);
+        }
         return this.option;
     }
 

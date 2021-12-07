@@ -39,6 +39,10 @@ public abstract class AbstractCommonCalculator {
     public final int calTotalPageCount(int totalContentsCount, int contentsPerPage) {
 
         int totalPageCount = (totalContentsCount / contentsPerPage) + (totalContentsCount % contentsPerPage == 0 ? 0 : 1);
+        if(totalPageCount == 0) {
+            return 1;
+        }
+
         return totalPageCount;
     }
 
