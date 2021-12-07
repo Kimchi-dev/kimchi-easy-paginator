@@ -6,12 +6,12 @@ import me.kimchi.pagination.object.PaginationObject;
 public class FixedCalculator extends AbstractCommonCalculator{
 
     @Override
-    protected int calTotalStep(int totalPageCnt, int numSizePerPage) {
+    public final int calTotalStep(int totalPageCnt, int numSizePerPage) {
         return totalPageCnt;
     }
 
     @Override
-    protected int calStartPage(int totalPageCnt, int currentPage, int numSizePerPage, int currentStep) throws Exception {
+    public final int calStartPage(int totalPageCnt, int currentPage, int numSizePerPage, int currentStep) throws Exception {
         int minimum = (numSizePerPage / 2) + (numSizePerPage % 2);
         if(totalPageCnt <= numSizePerPage) {
             if(minimum >= currentPage) {
@@ -28,7 +28,7 @@ public class FixedCalculator extends AbstractCommonCalculator{
     }
 
     @Override
-    protected int calEndPage(int totalPageCnt, int currentPage, int numSizePerPage, int currentStep) {
+    public final int calEndPage(int totalPageCnt, int currentPage, int numSizePerPage, int currentStep) {
 
         int pivot = ((int) Math.floor(((float) numSizePerPage) / 2));
         if (totalPageCnt <= numSizePerPage) {
@@ -49,7 +49,7 @@ public class FixedCalculator extends AbstractCommonCalculator{
     }
 
     @Override
-    protected int calCurrentStep(int totalPageCnt, int currentPage, int numSizePerPage) {
+    public final int calCurrentStep(int totalPageCnt, int currentPage, int numSizePerPage) {
         return currentPage;
     }
 
