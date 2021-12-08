@@ -15,7 +15,7 @@ class AbstractCommonCalculatorTest implements MockBase {
 
 
     @ParameterizedTest(name = "[공통 계산] 전체 페이지 개수 "+ParameterizedTest.DEFAULT_DISPLAY_NAME)
-    @MethodSource("pagination.calculator.SourceAsMethod#commonTotalPageCount")
+    @MethodSource("com.github.kimchidev.pagination.calculator.SourceAsMethod#commonTotalPageCount")
     public void calTotalPageCount(int totalContentsCount, int contentsPerPage, int expectedResult) throws Throwable {
         /* Given & When */
         int actualResult = calculator.calTotalPageCount(totalContentsCount, contentsPerPage);
