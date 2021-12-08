@@ -4,7 +4,7 @@
 
     <groupId>me.kimchi</groupId>
     <artifactId>kimchi-easy-paginator</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Kimchi Paginator</name>
@@ -141,7 +141,7 @@
         <connection>scm:git:git://github.com/Kimchi-dev/kimchi-easy-paginator.git</connection>
         <developerConnection>scm:git:ssh://github.com:Kimchi-dev/kimchi-easy-paginator.git</developerConnection>
         <url>https://github.com/Kimchi-dev/kimchi-easy-paginator</url>
-        <tag>kimchi-easy-paginator-1.0.0</tag>
+        <tag>HEAD</tag>
     </scm>
     <distributionManagement>
         <snapshotRepository>
