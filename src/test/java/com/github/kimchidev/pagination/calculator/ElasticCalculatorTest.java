@@ -45,7 +45,7 @@ class ElasticCalculatorTest implements MockBase {
 
 
     @ParameterizedTest(name = "[엘라스틱 페이징] 현재 스탭계산 "+ParameterizedTest.DEFAULT_DISPLAY_NAME)
-    @MethodSource("pagination.calculator.SourceAsMethod#elasticCurrentStep")
+    @MethodSource("com.github.kimchidev.pagination.calculator.SourceAsMethod#elasticCurrentStep")
     public void calCurrentStep(int totalPageCnt, int currentPage, int numSizePerPage, int expected) throws Throwable {
         /* Given & When */
         int actual = calculator.calCurrentStep(totalPageCnt, currentPage, numSizePerPage);
