@@ -38,17 +38,23 @@ public class PagingUtil {
         FileWriter writer = null;
 
         try {
-            File file = new File(filePath);
-            if ( ! file.isDirectory()) {
-                String nonLastPath = filePath.replace(filePath.substring(filePath.lastIndexOf("/")), "");
-                File onlyPath = new File(nonLastPath);
-                onlyPath.mkdirs();
-            } else {
-                file.mkdirs();
-                file = new File(filePath + "/result."+extension);
+            String lastDepth = filePath.substring(filePath.lastIndexOf('/'));
+            File fileOrDir = null;
+            //== Not Directory ==//
+            if(lastDepth.contains(".")) {
+                String directoryPath = filePath.replace(lastDepth, "");
+                fileOrDir = new File(directoryPath);
+            }
+            //== Directory ==//
+            else {
+                fileOrDir = new File(filePath);
+                filePath = filePath + "/result."+extension;
             }
 
-            writer = new FileWriter(file);
+            fileOrDir.mkdirs();
+            fileOrDir = new File(filePath);
+
+            writer = new FileWriter(fileOrDir);
             writer.write(helperPage);
         } catch (Exception e) {
             e.printStackTrace();
