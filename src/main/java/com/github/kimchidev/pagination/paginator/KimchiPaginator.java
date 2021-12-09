@@ -29,7 +29,7 @@ public class KimchiPaginator implements Paginator {
      * @param contentsPerPage  Number of contents(board) per page;
      * @param currentPage currently page number
      * @param constant Select Your Database. default PaginatorConstant.MYSQL_PAGING
-     * @throws Exception
+     * @throws Exception throw exceptions according to initialize
      */
     @Override
     public void init(int totalContentsCount, int numPerPage, int contentsPerPage, int currentPage, PaginatorConstant constant) throws Exception {

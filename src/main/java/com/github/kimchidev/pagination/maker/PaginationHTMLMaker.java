@@ -71,9 +71,9 @@ public class PaginationHTMLMaker implements Maker {
     }
 
     private String getSampleHTML() throws Exception {
-        URL resource = this.getClass().getClassLoader().getResource("maker/sample-template.html");
+        ClassLoader classLoader = this.getClass().getClassLoader();
 
-        String html = PagingUtil.readFile(resource);
+        String html = PagingUtil.readFile(classLoader, "maker/sample-template.html");
 
         return html;
     }
@@ -81,8 +81,8 @@ public class PaginationHTMLMaker implements Maker {
     @Override
     public Maker withCss() throws Exception {
         StringBuilder builder = new StringBuilder();
-        URL resource = this.getClass().getClassLoader().getResource("maker/paginate.css");
-        String css = PagingUtil.readFile(resource);
+        ClassLoader classLoader = this.getClass().getClassLoader();
+        String css = PagingUtil.readFile(classLoader, "maker/paginate.css");
         builder
                 .append("<style>").append(NEW)
                 .append(css).append(NEW)

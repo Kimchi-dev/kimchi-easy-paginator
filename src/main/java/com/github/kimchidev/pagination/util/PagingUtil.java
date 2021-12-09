@@ -5,19 +5,19 @@ import java.net.URL;
 
 public class PagingUtil {
 
-    public static String readFile(URL resource) throws Exception {
-        if (resource == null) {
-            throw new NullPointerException("Not found URL");
+    public static String readFile(ClassLoader loader, String path) throws Exception {
+        if (loader == null) {
+            throw new NullPointerException("Not found Loader.");
         }
 
         String fileContent;
         StringBuilder builder = new StringBuilder();
 
-        FileInputStream inputStream = null;
+        InputStream resourceAsStream = null;
         BufferedReader bufferedReader = null;
         try {
-            inputStream = new FileInputStream(resource.getFile());
-            bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+            resourceAsStream = loader.getResourceAsStream(path);
+            bufferedReader = new BufferedReader(new InputStreamReader(resourceAsStream));
             String line;
             while((line = bufferedReader.readLine()) != null) {
                 builder.append(line);
@@ -27,7 +27,7 @@ public class PagingUtil {
             e.printStackTrace();
         } finally {
             fileContent = builder.toString();
-            inputStream.close();
+            resourceAsStream.close();
             bufferedReader.close();
         }
 

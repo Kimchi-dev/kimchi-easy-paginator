@@ -25,6 +25,8 @@
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>utf-8</project.reporting.outputEncoding>
     </properties>
     <build>
         <plugins>
@@ -43,6 +45,7 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- 메이븐 빌드 내 테스트 플러그인 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -53,6 +56,7 @@
                     </includes>
                 </configuration>
             </plugin>
+            <!-- 메이븐 릴리즈 플러그인 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
@@ -64,6 +68,7 @@
                     <goals>deploy</goals>
                 </configuration>
             </plugin>
+            <!-- 메이븐 스테이징 플러그인 -->
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
