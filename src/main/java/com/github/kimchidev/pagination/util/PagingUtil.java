@@ -1,5 +1,8 @@
 package com.github.kimchidev.pagination.util;
 
+import com.github.kimchidev.pagination.constant.PagingExceptConstant;
+import com.github.kimchidev.pagination.exception.PagingException;
+
 import java.io.*;
 import java.net.URL;
 
@@ -57,9 +60,15 @@ public class PagingUtil {
             writer = new FileWriter(fileOrDir);
             writer.write(helperPage);
         } catch (Exception e) {
+            if(e instanceof FileNotFoundException) {
+                throw new PagingException(PagingExceptConstant.ALREADY_EXIST_FILE);
+            }
+
             e.printStackTrace();
         } finally {
-            writer.close();
+            if (writer != null) {
+                writer.close();
+            }
         }
 
     }

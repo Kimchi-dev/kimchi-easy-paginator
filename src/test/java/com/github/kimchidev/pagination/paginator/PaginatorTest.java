@@ -6,10 +6,12 @@ import com.github.kimchidev.pagination.constant.PagingExceptConstant;
 import com.github.kimchidev.pagination.exception.PagingException;
 import com.github.kimchidev.pagination.object.PaginatedObject;
 import com.github.kimchidev.pagination.paginator.KimchiPaginator;
+import com.github.kimchidev.pagination.util.PagingUtil;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
 class PaginatorTest {
 
@@ -130,4 +132,5 @@ class PaginatorTest {
         /* Then */
         assertEquals(1, result.getCurrentPage());
     }
+
 }
