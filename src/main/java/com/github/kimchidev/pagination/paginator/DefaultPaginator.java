@@ -163,7 +163,6 @@ public class DefaultPaginator extends AbstractDefaultPaginator {
             } else if(this.constant.isSameConstant(PaginatorConstant.POSTGRESQL_PAGING)) {
                 builder
                         .append("You can paginate with PostgreSQL DataBase's SQL that s like either following Queries.").append(NEW_LINE)
-                        .append(" ==> ").append(String.format("LIMIT %5d OFFSET %5d", calculated.get(CalculateConstant.START_INDEX.getValueName()), calculated.get(CalculateConstant.END_INDEX.getValueName()))).append(NEW_LINE)
                         .append(" ==> ").append(String.format("OFFSET %5d ROWS FETCH LIMIT %5d", calculated.get(CalculateConstant.END_INDEX.getValueName()), calculated.get(CalculateConstant.START_INDEX.getValueName()))).append(NEW_LINE);
             }
 

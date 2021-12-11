@@ -1,12 +1,45 @@
 *Introduction*
 
 안녕하세요, 저는 Kimchi-dev입니다.
-서버 개발자이지만, 페이징 처리가 필요한 업무를 하다, 소스 정리도 안되고 사용이 불편하여 이 페이지네이터를 만들게 되었습니다.
+페이징은 어려운게 아닌데, 간단한 어드민 만들때마다 코드를 넣어줘야하고, 종류별로 하나씩 다르게 해야할땐 시간을 쏫는게 너무 아깝다고 생각했어요.
 
 비록, 큰 기능은 아니지만 웹과 상관없이 자바 어플리케이션이라면 모두 사용가능한 페이지네이터 입니다.  
 부족한 영어지만 모두가 볼수 있도록 영어로 작성 하겠습니다! 코드만 보셔도 쉽게 사용 하실수 있습니다.
 
 사용시 불편한사항이나 개선사항이 필요하다면 tnine923@gmail.com 으로 언제든 환영입니다 : )
+
+### Dependencies
+
+**Apache Maven**
+
+```xml
+<dependency>
+  <groupId>io.github.kimchi-dev</groupId>
+  <artifactId>kimchi-easy-paginator</artifactId>
+  <version>1.0.3</version>
+</dependency>
+```
+
+**Gradle Groovy DSL**
+
+```groovy
+implementation 'io.github.kimchi-dev:kimchi-easy-paginator:1.0.3'
+```
+
+**Gradle Kotlin DSL**
+
+```kotlin
+implementation("io.github.kimchi-dev:kimchi-easy-paginator:1.0.3")
+```
+
+### There are no dependencies that if you want, note [Maven Central](https://search.maven.org/artifact/io.github.kimchi-dev/kimchi-easy-paginator/1.0.2/jar)
+
+<br/>
+<hr>
+
+<br/>
+<br/>
+
 
 ![init](image/pagination.png?raw=true)
 
@@ -28,12 +61,102 @@
 | PaginatorConstant.POSTGRESQL_PAGING | Paginating for PostgreSQL |
 
 
+## Seeak peek (note Example)
+
+<br>
+
+### When fixed mode and other page.
+<br>
+
+
+
+![elasetic normal](image/elastic_normal.gif?raw=true)
+```java
+paginator.elastic().build().paginate();
+```
+
+<hr>
+<br>
+
+### When elastic mode and Move.
+<br>
+
+
+
+
+![elasetic move](image/elastic_move.gif?raw=true)
+```java
+paginator.elastic();
+
+if(pre) {
+    paginator.pre();    
+} else if(next) {
+    paginator.next();    
+}
+
+paginator.build().paginate();
+```
+<hr>
+<br>
+
+### When fixed mode and other page.
+<br>
+
+
+![fixed normal](image/fixed_normal.gif?raw=true)
+```java
+paginator.fixed().build().paginate();
+```
+<hr>
+<br>
+
+### When fixed mode and Move.
+<br>
+
+
+![fixed move](image/fixed_move.gif?raw=true)
+```java
+paginator.fixed();
+
+if(pre) {
+    paginator.pre();    
+} else if(next) {
+    paginator.next();    
+}
+
+paginator.build().paginate();
+```
+<hr>
+<br>
+
+### When set the custom button name.
+<br>
+
+
+![expose disabed button](image/button_name.gif?raw=true)
+```java
+PagingMaker maker = new PagingMaker(result, "/boards");
+maker.setMoveButtonName("이전", "다음");
+```
+<hr>
+<br>
+
+### When expose disabled button. (add param)
+<br>
+
+
+![expose disabed button](image/exposeDisabled.gif?raw=true)
+```java
+PagingMaker maker = new PagingMaker(result, "/boards", true);
+maker.setMoveButtonName("이전", "다음");
+```
+
 ## Usage
 
 
 There are 3V !
 
-Very Simple, Very Convenience, Very don’t care dependent in java XD.
+Very Simple, Very Convenience, Very delicious XD.
 
 Java Application ? Spring ? Etc ? It doesn't matter if in JVM
 
@@ -54,7 +177,7 @@ public class BoardService {
     
     private final BoardRepository boardRepository;
     
-    @Transactional(readOnly = true) // matching for both **total board size and actual lookuped board size.
+    @Transactional(readOnly = true) // matching for both total board size and actual lookuped board size.
     public ResponseEntity<List<Board>> getBoardList(int currentPage) {
         
         //1. Create Paginator 
@@ -71,7 +194,13 @@ public class BoardService {
         
         List<Board> boardList = boardRepository.findBoardList(result.getStartIndex(), result.getEndIndex());
         
-        return ResponseEntity.ok(boardList);
+        ResultBoardDto response = ResultBoardDto.builder()
+                .boardList(boardList)
+                .pagination(result)
+                .build()
+        ;
+        
+        return ResponseEntity.ok(response);
     }
 }
 ```
@@ -156,7 +285,7 @@ You can paginate with MySQL DataBase's SQL that like following Query.
 
 ### That's not All !
 
-1. create simple application and just setting !
+Create simple application and just setting first !
 
 ```java
 @RestController
@@ -365,3 +494,5 @@ li.page-item {
 }
 </style>
 ```
+
+### Have your self !

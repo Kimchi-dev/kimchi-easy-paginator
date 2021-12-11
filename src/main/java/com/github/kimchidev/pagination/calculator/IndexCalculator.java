@@ -3,35 +3,35 @@ package com.github.kimchidev.pagination.calculator;
 public abstract class IndexCalculator {
 
 
-    protected abstract int calStartIndex(int currentPage, int numSizePerPage);
-    protected abstract int calEndIndex(int currentPage, int numSizePerPage, int startIndex, int contentsPerPage);
+    protected abstract int calStartIndex(int currentPage, int contentsPerPage);
+    protected abstract int calEndIndex(int currentPage, int startIndex, int contentsPerPage);
 
     public static class MysqlIndexCalculator extends IndexCalculator {
 
         @Override
-        protected int calStartIndex(int currentPage, int numSizePerPage) {
-            int startIndex = (currentPage * numSizePerPage) - numSizePerPage;
+        protected int calStartIndex(int currentPage, int contentsPerPage) {
+            int startIndex = (currentPage * contentsPerPage) - contentsPerPage;
 
             return startIndex;
         }
 
         @Override
-        protected  int calEndIndex(int currentPage, int numSizePerPage, int stargIndex, int contentsPerPage) {
+        protected  int calEndIndex(int currentPage, int startIndex, int contentsPerPage) {
 
-            return numSizePerPage;
+            return contentsPerPage;
         }
     }
 
     public static class OracleIndexCalculator extends IndexCalculator {
         @Override
-        protected int calStartIndex(int currentPage, int numSizePerPage) {
-            int startIndex = (currentPage * numSizePerPage) - numSizePerPage;
+        protected int calStartIndex(int currentPage, int contentsPerPage) {
+            int startIndex = (currentPage * contentsPerPage) - contentsPerPage;
 
             return (startIndex + 1);
         }
 
         @Override
-        protected int calEndIndex(int currentPage, int numSizePerPage, int startIndex, int contentsPerPage) {
+        protected int calEndIndex(int currentPage, int startIndex, int contentsPerPage) {
             return (startIndex + contentsPerPage) - 1;
         }
     }
@@ -45,8 +45,8 @@ public abstract class IndexCalculator {
         }
 
         @Override
-        protected int calEndIndex(int currentPage, int numSizePerPage, int startIndex, int contentsPerPage) {
-            int endIndex = (currentPage * numSizePerPage) - numSizePerPage;
+        protected int calEndIndex(int currentPage, int startIndex, int contentsPerPage) {
+            int endIndex = (currentPage * contentsPerPage) - contentsPerPage;
 
             return endIndex;
         }

@@ -103,7 +103,7 @@ class SourceAsMethod {
         return Stream.of(
                 Arguments.of(315, 248, 11, 23, 243),
                 Arguments.of(2064, 1989, 10, 1989, 1985),
-                Arguments.of(1205, 1204, 17, 1204, 1196),
+                Arguments.of(1205, 1204, 17, 1204, 1189),
                 Arguments.of(20364, 20251, 14, 1447, 20245),
                 Arguments.of(95431, 95364, 8, 11921, 95361),
                 Arguments.of(1029353, 1029224, 16, 64327, 1029217)

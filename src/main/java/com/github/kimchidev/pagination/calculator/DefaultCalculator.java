@@ -54,8 +54,8 @@ public final class DefaultCalculator implements Calculator {
 
         calculator.addValue(CalculateConstant.START_PAGE, calculator.calStartPage(calculator.getValue(CalculateConstant.TOTAL_PAGE_COUNT), calculator.getValue(CalculateConstant.CURRENT_PAGE), calculator.getValue(CalculateConstant.NUM_SIZE_PER_PAGE), calculator.getValue(CalculateConstant.CURRENT_STEP)));
         calculator.addValue(CalculateConstant.END_PAGE,calculator.calEndPage(calculator.getValue(CalculateConstant.TOTAL_PAGE_COUNT), calculator.getValue(CalculateConstant.CURRENT_PAGE), calculator.getValue(CalculateConstant.NUM_SIZE_PER_PAGE), calculator.getValue(CalculateConstant.CURRENT_STEP)));
-        calculator.addValue(CalculateConstant.START_INDEX, indexCalculator.calStartIndex(calculator.getValue(CalculateConstant.CURRENT_PAGE), calculator.getValue(CalculateConstant.NUM_SIZE_PER_PAGE)));
-        calculator.addValue(CalculateConstant.END_INDEX, indexCalculator.calEndIndex(calculator.getValue(CalculateConstant.CURRENT_PAGE), calculator.getValue(CalculateConstant.NUM_SIZE_PER_PAGE), calculator.getValue(CalculateConstant.START_INDEX), calculator.getValue(CalculateConstant.CONTENTS_PER_PAGE)));
+        calculator.addValue(CalculateConstant.START_INDEX, indexCalculator.calStartIndex(calculator.getValue(CalculateConstant.CURRENT_PAGE), calculator.getValue(CalculateConstant.CONTENTS_PER_PAGE)));
+        calculator.addValue(CalculateConstant.END_INDEX, indexCalculator.calEndIndex(calculator.getValue(CalculateConstant.CURRENT_PAGE), calculator.getValue(CalculateConstant.START_INDEX), calculator.getValue(CalculateConstant.CONTENTS_PER_PAGE)));
         calculator.calAbleToNext(defaultObject);
         defaultObject.setCalculatedResult(calculator.getValue(CalculateConstant.TOTAL_PAGE_COUNT), calculator.getValue(CalculateConstant.CURRENT_STEP), calculator.getValue(CalculateConstant.START_PAGE), calculator.getValue(CalculateConstant.END_PAGE), calculator.getValue(CalculateConstant.TOTAL_STEP_CNT));
         defaultObject.setResult(calculator.getValue(CalculateConstant.START_INDEX), calculator.getValue(CalculateConstant.END_INDEX));

@@ -12,19 +12,24 @@ public class FixedCalculator extends AbstractCommonCalculator{
 
     @Override
     public final int calStartPage(int totalPageCnt, int currentPage, int numSizePerPage, int currentStep) throws Exception {
-        int minimum = (numSizePerPage / 2) + (numSizePerPage % 2);
+        int pivot = ((int) Math.floor(((float) numSizePerPage) / 2));
         if(totalPageCnt <= numSizePerPage) {
-            if(minimum >= currentPage) {
+
+            return 1;
+        }
+        pivot = numSizePerPage % 2 == 0 ? pivot - 1 : pivot;
+
+        if (currentPage < (totalPageCnt - pivot)) {
+            int expectedStart = (currentPage - pivot);
+            if(expectedStart > 1) {
+
+                return expectedStart;
+            } else if (expectedStart <= 1) {
                 return 1;
             }
         }
 
-        if(minimum >= currentPage) {
-            return 1;
-        }
-
-        return (currentPage - minimum) + 1;
-
+        return (totalPageCnt - (numSizePerPage - 1));
     }
 
     @Override
@@ -36,16 +41,20 @@ public class FixedCalculator extends AbstractCommonCalculator{
             return totalPageCnt;
         }
 
-        if((currentPage + (pivot)) <= totalPageCnt) {
+        if(currentPage <= pivot) {
 
-            return (currentPage + pivot);
-        } else if(currentPage + pivot > totalPageCnt) {
+            return numSizePerPage;
+        } else if(pivot < currentPage) {
+            int expectedEnd = (currentPage + pivot);
 
-            return totalPageCnt;
+            if(expectedEnd < totalPageCnt) {
 
+                return expectedEnd;
+            }
         }
 
-        return numSizePerPage;
+
+        return totalPageCnt;
     }
 
     @Override
