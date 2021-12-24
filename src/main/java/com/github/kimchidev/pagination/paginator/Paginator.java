@@ -13,9 +13,7 @@ public interface Paginator {
 
     Paginator fixed() throws Exception;
 
-    Paginator pre() throws Exception;
-
-    Paginator next() throws Exception;
+    Paginator move(boolean isPre, boolean isNext) throws Exception;
 
     ResultPaginator build() throws Exception;
 

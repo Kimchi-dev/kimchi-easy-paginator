@@ -1,15 +1,25 @@
 package com.github.kimchidev.pagination;
 
-import com.github.kimchidev.pagination.constant.PaginatorConstant;
-import com.github.kimchidev.pagination.paginator.KimchiPaginator;
+import com.github.kimchidev.pagination.maker.PageMaker;
+import com.github.kimchidev.pagination.object.PaginatedObject;
+import com.github.kimchidev.pagination.paginator.OffsetPaginator;
 
 public class Main {
+
     public static void main(String[] args) throws Exception {
-        KimchiPaginator paginator = new KimchiPaginator();
-        int currentPage = 15;
-        paginator.init(150, 7,10, currentPage, PaginatorConstant.MYSQL_PAGING);
-        paginator.elastic().build();
-        String pagingLog = paginator.getPagingLog();
-        System.out.println(pagingLog);
+
+        boolean isPre = false;
+        boolean isNext = false;
+
+        PaginatedObject result = new OffsetPaginator(150, 11)
+                .elastic()
+                .move(isPre, isNext)
+                .build()
+                .paginate();
+
+        String generated = new PageMaker(result, "/board/list")
+                .setMoveButtonName("이전", "다음")
+                .exposeDisabled()
+                .html().css().get();
     }
 }

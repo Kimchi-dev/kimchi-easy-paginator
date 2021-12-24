@@ -1,6 +1,6 @@
 package com.github.kimchidev.pagination.calculator;
 
-public abstract class IndexCalculator {
+abstract class IndexCalculator {
 
 
     protected abstract int calStartIndex(int currentPage, int contentsPerPage);

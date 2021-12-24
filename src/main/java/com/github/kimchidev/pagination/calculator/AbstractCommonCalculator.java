@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * Common calculation formula
  */
-public abstract class AbstractCommonCalculator {
+abstract class AbstractCommonCalculator {
 
     private Map<String, Integer> manager = new HashMap<>();
     private boolean goPre;

@@ -16,23 +16,23 @@
 <dependency>
   <groupId>io.github.kimchi-dev</groupId>
   <artifactId>kimchi-easy-paginator</artifactId>
-  <version>1.0.3</version>
+  <version>1.0.4</version>
 </dependency>
 ```
 
 **Gradle Groovy DSL**
 
 ```groovy
-implementation 'io.github.kimchi-dev:kimchi-easy-paginator:1.0.3'
+implementation 'io.github.kimchi-dev:kimchi-easy-paginator:1.0.4'
 ```
 
 **Gradle Kotlin DSL**
 
 ```kotlin
-implementation("io.github.kimchi-dev:kimchi-easy-paginator:1.0.3")
+implementation("io.github.kimchi-dev:kimchi-easy-paginator:1.0.4")
 ```
 
-### There are no dependencies that if you want, note [Maven Central](https://search.maven.org/artifact/io.github.kimchi-dev/kimchi-easy-paginator/1.0.2/jar)
+### There are no dependencies that if you want, note [Maven Central](https://search.maven.org/artifact/io.github.kimchi-dev/kimchi-easy-paginator/1.0.4/jar)
 
 <br/>
 <hr>
@@ -42,6 +42,15 @@ implementation("io.github.kimchi-dev:kimchi-easy-paginator:1.0.3")
 
 
 ![init](image/pagination.png?raw=true)
+
+### note: Also You can leave out the detail value like below.
+
+```java
+int totalContentCount = boardList.size();
+
+OffsetPaginator paginator = new OffsetPaginator(totalContentCount, currentPage);
+PaginateObject result = paginator.elastic().build.paginate();
+```
 
 # give it to me, if you bothered!
 
@@ -61,7 +70,7 @@ implementation("io.github.kimchi-dev:kimchi-easy-paginator:1.0.3")
 | PaginatorConstant.POSTGRESQL_PAGING | Paginating for PostgreSQL |
 
 
-## Seeak peek (note Example)
+## Sneak peek (note Example)
 
 <br>
 
@@ -86,15 +95,13 @@ paginator.elastic().build().paginate();
 
 ![elasetic move](image/elastic_move.gif?raw=true)
 ```java
-paginator.elastic();
+boolean clickPre = true; //when they clicked previous button
+boolean clickNext = false; //when they clicked next button
 
-if(pre) {
-    paginator.pre();    
-} else if(next) {
-    paginator.next();    
-}
-
-paginator.build().paginate();
+paginator.elastic()
+        .move(clickPre, clickNext)
+        .build()
+        .paginate();
 ```
 <hr>
 <br>
@@ -116,15 +123,10 @@ paginator.fixed().build().paginate();
 
 ![fixed move](image/fixed_move.gif?raw=true)
 ```java
-paginator.fixed();
-
-if(pre) {
-    paginator.pre();    
-} else if(next) {
-    paginator.next();    
-}
-
-paginator.build().paginate();
+paginator.fixed()
+        .move(clickPre, clickNext)
+        .build()
+        .paginate();
 ```
 <hr>
 <br>
@@ -150,6 +152,31 @@ maker.setMoveButtonName("이전", "다음");
 PagingMaker maker = new PagingMaker(result, "/boards", true);
 maker.setMoveButtonName("이전", "다음");
 ```
+<hr>
+<br>
+
+### You can assemble it like this
+<br>
+
+```java
+boolean isPre = false;
+boolean isNext = false;
+
+PaginatedObject result = new OffsetPaginator(150, 11)
+        .elastic()
+        .move(isPre, isNext)
+        .build()
+        .paginate();
+
+String generated = new PageMaker(result, "/board/list")
+        .setMoveButtonName("이전", "다음")
+        .exposeDisabled()
+        .html().css().get();
+```
+<hr>
+<br>
+
+
 
 ## Usage
 
@@ -164,11 +191,19 @@ Java Application ? Spring ? Etc ? It doesn't matter if in JVM
 
 *Note: You can control these list size.*
 ```java
-KimchiPaginator paginator = new KimchiPaginator();
-paginator.init(boardList.size(), {A}, {B},{Select DataBase})
+OffsetPaginator paginator = new OffsetPaginator();
+paginator.init(boardList.size(), {A}, {B}, currentPage, {Select DataBase})
+```
+
+*You can also leave out details*
+```java
+//default A: 10, B: 10
+OffsetPaginator paginator = new OffsetPaginator(boardList.size(), currentPage); 
 ```
 
 ### Do it !
+
+#### Ex Spring MVC
 
 ```java
 @Service
@@ -178,25 +213,28 @@ public class BoardService {
     private final BoardRepository boardRepository;
     
     @Transactional(readOnly = true) // matching for both total board size and actual lookuped board size.
-    public ResponseEntity<List<Board>> getBoardList(int currentPage) {
+    public ResponseEntity<List<Board>> getBoardList(int currentPage, 
+            @RequestParam(value ="isPre", defaultValue=false) boolean isPre,
+            @RequestParam(value ="isNext", defaultValue=false) boolean isNext) {
         
-        //1. Create Paginator 
-        KimchiPaginator paginator = new KimchiPaginator();
+        // Create Paginator and Using Result
       	int totalSize = boardRepository.getTotalBoardSize();
-        
-      	//2. Initialize Paginator
-        paginator.init(totalSize, 8, 3, PaginatorConstant.POSTGRESQL_PAGING);
-        
-        //3. Using Result (End)
-        PaginatedObject result = paginator.elastic()
+        PaginatedObject result = new OffsetPaginator(totalSize, currentPage)
+                .elastic()
+                .move(isPre, isNext)
                 .build() //actual Calculating
                 .paginate(); // paginate with actual calculated stuff
         
         List<Board> boardList = boardRepository.findBoardList(result.getStartIndex(), result.getEndIndex());
+
+        String generated = new PageMaker(result, "/board/list")
+                .setMoveButtonName("이전", "다음")
+                .exposeDisabled()
+                .html().css().get();
         
         ResultBoardDto response = ResultBoardDto.builder()
                 .boardList(boardList)
-                .pagination(result)
+                .pagination(generated) // html + css
                 .build()
         ;
         
@@ -223,13 +261,11 @@ paginator.fixed().build().paginate();   // [4][5][6][7] 8 [9][10][11][12] If cur
 boolean clickPre = true; //when they clicked previous button
 boolean clickNext = false; //when they clicked next button
 
-if(clickPre) {
-    paginator.pre();
-} else if(clickNext) {
-    paginator.next();
-}
-
-PaginatedObject result = paginator.elastic().build().paginate(); // or paginator.fixed();
+PaginatedObject result = paginator
+        .elastic()
+        .move(clickPre, clickNext)
+        .build()
+        .paginate(); // or paginator.fixed();
 
 //There are essential values that, which for custom pagination !
 boolean ableToPreStep = result.isAbleToPreStep(); 
@@ -251,7 +287,7 @@ int endIndex = result.getEndIndex();
 * In Java
 
 ```java
-KimchiPaginator paginator = new KimchiPaginator();
+OffsetPaginator paginator = new OffsetPaginator();
 
 int currentPage = page; //9
 
@@ -293,7 +329,7 @@ public class BoardController {
     
     @GetMapping("/board/list")
     public ResponseEntity<List<Board>> lookUpBoardList(int currentPage) throws Exception {
-        KimchiPaginator paginator = new KimchiPaginator();
+        OffsetPaginator paginator = new OffsetPaginator();
 
         int currentPage = currentPage; //127764
 

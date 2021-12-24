@@ -6,7 +6,7 @@ import com.github.kimchidev.pagination.exception.PagingException;
 import com.github.kimchidev.pagination.paginator.Paginator;
 import com.github.kimchidev.pagination.constant.PaginatorConstant;
 
-public class AppropriateCalculatorProvider {
+class AppropriateCalculatorProvider {
 
     private static final AppropriateCalculatorProvider provider = new AppropriateCalculatorProvider();
     private Paginator paginator;
@@ -23,10 +23,13 @@ public class AppropriateCalculatorProvider {
 
             return new DefaultCalculator(new IndexCalculator.MysqlIndexCalculator());
         } else if(constant.isSameConstant(PaginatorConstant.ORACLE_PAGING)) {
+
             return new DefaultCalculator(new IndexCalculator.OracleIndexCalculator());
         } else if (constant.isSameConstant(PaginatorConstant.POSTGRESQL_PAGING)) {
+
             return new DefaultCalculator((new IndexCalculator.PostgreSqlIndexCalculator()));
         }
+
         throw new PagingException(PagingExceptConstant.NOT_SUPPORTED_CONSTANT);
     }
 

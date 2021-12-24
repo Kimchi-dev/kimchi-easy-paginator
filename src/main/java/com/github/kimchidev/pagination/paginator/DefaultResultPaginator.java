@@ -3,8 +3,7 @@ package com.github.kimchidev.pagination.paginator;
 import com.github.kimchidev.pagination.calculator.Calculator;
 import com.github.kimchidev.pagination.object.PaginatedObject;
 
-public class DefaultResultPaginator implements ResultPaginator {
-    private Calculator calculator;
+class DefaultResultPaginator implements ResultPaginator {
     private PaginatedObject object;
 
     public DefaultResultPaginator(PaginatedObject object) {

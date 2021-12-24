@@ -13,13 +13,21 @@ import com.github.kimchidev.pagination.calculator.CalculatorProxy;
 
 import java.util.Map;
 
-public class DefaultPaginator extends AbstractDefaultPaginator {
+class DefaultPaginator extends AbstractDefaultPaginator {
 
     private Calculator calculator;
     private PaginationObject object;
     private PagingOption option;
     private PaginatorConstant constant;
     private ResultPaginator resultPaginator;
+
+    public DefaultPaginator() {
+
+    }
+
+    public DefaultPaginator(int totalContentsCount, int currentPage) throws Exception {
+        init(totalContentsCount, 10, 10,currentPage, PaginatorConstant.MYSQL_PAGING);
+    }
 
     @Override
     public PagingOption getPagingOption() {
@@ -76,20 +84,22 @@ public class DefaultPaginator extends AbstractDefaultPaginator {
     }
 
     @Override
-    public Paginator pre() throws Exception {
-        if(this.option == null) {
-            throw new PagingException(PagingExceptConstant.OPTION_CANNOT_BE_NULL);
+    public Paginator move(boolean isPre, boolean isNext) throws Exception {
+        if(isPre && isNext) {
+            return this;
         }
-        this.calculator.movePre(true);
-        return this;
-    }
 
-    @Override
-    public Paginator next() throws Exception {
         if(this.option == null) {
             throw new PagingException(PagingExceptConstant.OPTION_CANNOT_BE_NULL);
         }
-        this.calculator.moveNext(true);
+
+        if(isPre) {
+
+            this.calculator.movePre(isPre);
+        } else if(isNext) {
+
+            this.calculator.moveNext(isNext);
+        }
         return this;
     }
 

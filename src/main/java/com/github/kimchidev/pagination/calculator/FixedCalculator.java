@@ -3,7 +3,7 @@ package com.github.kimchidev.pagination.calculator;
 import com.github.kimchidev.pagination.constant.CalculateConstant;
 import com.github.kimchidev.pagination.object.PaginationObject;
 
-public class FixedCalculator extends AbstractCommonCalculator{
+class FixedCalculator extends AbstractCommonCalculator{
 
     @Override
     public final int calTotalStep(int totalPageCnt, int numSizePerPage) {

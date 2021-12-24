@@ -2,16 +2,12 @@ package com.github.kimchidev.pagination.maker;
 
 import com.github.kimchidev.pagination.object.PaginatedObject;
 
-public class PagingMaker implements Maker{
+public class PageMaker implements Maker{
 
     private Maker maker;
 
-    public PagingMaker(PaginatedObject target, String endPoint) {
+    public PageMaker(PaginatedObject target, String endPoint) {
         this.maker = new PaginationHTMLMaker(target, endPoint);
-    }
-
-    public PagingMaker(PaginatedObject target, String endPoint, boolean exposeDisabledMoveBlock) {
-        this.maker = new PaginationHTMLMaker(target, endPoint ,exposeDisabledMoveBlock);
     }
 
     @Override
@@ -21,9 +17,8 @@ public class PagingMaker implements Maker{
     }
 
     @Override
-    public Maker generate() throws Exception {
-        this.maker.generate();
-        return this;
+    public Maker exposeDisabled() {
+        return this.maker.exposeDisabled();
     }
 
     @Override
@@ -38,8 +33,8 @@ public class PagingMaker implements Maker{
     }
 
     @Override
-    public Maker withCss() throws Exception {
-        this.maker.withCss();
+    public Maker css() throws Exception {
+        this.maker.css();
         return this;
     }
 

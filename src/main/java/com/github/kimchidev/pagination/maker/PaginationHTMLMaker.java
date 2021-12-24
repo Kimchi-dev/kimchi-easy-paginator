@@ -1,14 +1,16 @@
 package com.github.kimchidev.pagination.maker;
 
+import com.github.kimchidev.pagination.constant.PagingExceptConstant;
+import com.github.kimchidev.pagination.exception.PagingException;
 import com.github.kimchidev.pagination.object.PaginatedObject;
 import com.github.kimchidev.pagination.util.PagingUtil;
 
-import java.net.URL;
 import java.util.Random;
 
 public class PaginationHTMLMaker implements Maker {
 
     private PaginatedObject target;
+
     private boolean exposeDisabledMoveBlock;
     private String pre;
     private String next;
@@ -28,12 +30,13 @@ public class PaginationHTMLMaker implements Maker {
         this.next = "Next";
     }
 
-    public PaginationHTMLMaker(PaginatedObject target, String endPoint, boolean exposeDisabledMoveBlock) {
-        this.target = target;
-        this.exposeDisabledMoveBlock = exposeDisabledMoveBlock;
-        this.endPoint = endPoint;
-        this.pre = "Pre";
-        this.next = "Next";
+    @Override
+    public Maker exposeDisabled() {
+        if(this.html != null) {
+            throw new PagingException(PagingExceptConstant.EXPOSE_NEED_HTML);
+        }
+        this.exposeDisabledMoveBlock = true;
+        return this;
     }
 
     @Override
@@ -43,8 +46,9 @@ public class PaginationHTMLMaker implements Maker {
         return this;
     }
 
+
     @Override
-    public Maker generate() throws Exception {
+    public void download(String downloadPath) throws Exception {
         String helperPage = getSampleHTML();
         if (this.html == null) {
             this.html = "";
@@ -58,12 +62,8 @@ public class PaginationHTMLMaker implements Maker {
                 .replace("<KimchiPagination/>", this.html)
                 .replace("<KimchiSampleCSS/>", this.css)
         ;
-        this.helperPage = helperPage;
-        return this;
-    }
 
-    @Override
-    public void download(String downloadPath) throws Exception {
+        this.helperPage = helperPage;
         if(this.helperPage == null) {
             throw new NullPointerException("There is no generate() method. If You want to get a sample page, call .generate().download({some-path})");
         }
@@ -79,7 +79,7 @@ public class PaginationHTMLMaker implements Maker {
     }
 
     @Override
-    public Maker withCss() throws Exception {
+    public Maker css() throws Exception {
         StringBuilder builder = new StringBuilder();
         ClassLoader classLoader = this.getClass().getClassLoader();
         String css = PagingUtil.readFile(classLoader, "maker/paginate.css");

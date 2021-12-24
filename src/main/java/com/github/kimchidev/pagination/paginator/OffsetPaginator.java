@@ -9,12 +9,16 @@ import com.github.kimchidev.pagination.constant.PagingOption;
  * Implementation Proxy of Paginator
  * <p>This Proxy just supply paginator with DefaultPaginator</p>
  */
-public class KimchiPaginator implements Paginator {
+public class OffsetPaginator implements Paginator {
 
     private AbstractDefaultPaginator paginator;
 
-    public KimchiPaginator (){
+    public OffsetPaginator() {
         paginator = new DefaultPaginator();
+    }
+
+    public OffsetPaginator(int totalContentsCount, int currentPage) throws Exception{
+        paginator = new DefaultPaginator(totalContentsCount, currentPage);
     }
 
     @Override
@@ -46,14 +50,9 @@ public class KimchiPaginator implements Paginator {
         return paginator.fixed();
     }
 
-    @Override
-    public Paginator pre() throws Exception {
-        return paginator.pre();
-    }
 
-    @Override
-    public Paginator next() throws Exception {
-        return paginator.next();
+    public Paginator move(boolean isPre, boolean isNext) throws Exception {
+        return paginator.move(isPre, isNext);
     }
 
     @Override

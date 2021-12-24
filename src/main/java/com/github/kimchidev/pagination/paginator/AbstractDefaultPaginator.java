@@ -4,7 +4,7 @@ package com.github.kimchidev.pagination.paginator;
 import com.github.kimchidev.pagination.constant.PaginatorConstant;
 import com.github.kimchidev.pagination.object.PaginationObject;
 
-public abstract class AbstractDefaultPaginator implements Paginator {
+abstract class AbstractDefaultPaginator implements Paginator {
 
     private PaginatorConstant constant = PaginatorConstant.MYSQL_PAGING;
 

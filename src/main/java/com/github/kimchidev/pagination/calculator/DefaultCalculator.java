@@ -8,7 +8,7 @@ import com.github.kimchidev.pagination.object.DefaultPaginationObject;
 
 import java.util.Map;
 
-public final class DefaultCalculator implements Calculator {
+final class DefaultCalculator implements Calculator {
 
     private IndexCalculator indexCalculator;
     private AbstractCommonCalculator calculator;
