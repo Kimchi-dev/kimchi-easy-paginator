@@ -41,6 +41,52 @@ implementation("io.github.kimchi-dev:kimchi-easy-paginator:1.0.4")
 <br/>
 
 
+### Since 1.0.4, changed
+
+#### Class Name
+```java
+KimchiPaginator paginator = new KimchiPaginator(g)
+```
+
+#### initialize
+```java
+//1.0.3
+KimchiPaginator paginator = new KimchiPaginator();
+paginator.init(boardList.size(), 10, 10, currentPage, PaginatorConstant.MYSQL_PAGING);
+
+//1.0.4 
+//if you want to using as default A: 10, B: 10, DB: MYSQL
+OffsetPaginator paginator = new OffsetPaginator(boardList.size(), currentPage);
+// or customize
+OffsetPagfinator paginator = new OffsetPaginator();
+paginator.init(boardList.size(), 7, 8, currentPage, PaginatorConstant.MYSQL_PAGING);
+```
+
+#### move step
+```java
+//1.0.3
+paginator.elastic();
+if(clickPre) {
+    paginator.pre();  
+} else if(clickNext) {
+    paginator.next();    
+}
+paginator.build().paginate();
+
+//1.0.4
+paginator.elastic()
+    .move(clickPre, clickNext)
+    .build()
+    .paginate();
+```
+
+<br/>
+<hr>
+
+<br/>
+<br/>
+
+
 ![init](image/pagination.png?raw=true)
 
 ### note: Also You can leave out the detail value like below.
