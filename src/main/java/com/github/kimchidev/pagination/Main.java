@@ -1,5 +1,6 @@
 package com.github.kimchidev.pagination;
 
+import com.github.kimchidev.pagination.constant.PaginatorConstant;
 import com.github.kimchidev.pagination.maker.PageMaker;
 import com.github.kimchidev.pagination.object.PaginatedObject;
 import com.github.kimchidev.pagination.paginator.OffsetPaginator;
@@ -11,15 +12,16 @@ public class Main {
         boolean isPre = false;
         boolean isNext = false;
 
-        PaginatedObject result = new OffsetPaginator(150, 11)
+
+        OffsetPaginator paginator = new OffsetPaginator(21059430, 183742);
+        paginator.init(21059430, 11, 17, 183742, PaginatorConstant.POSTGRESQL_PAGING);
+        paginator
                 .elastic()
                 .move(isPre, isNext)
                 .build()
                 .paginate();
+        String log = paginator.getPagingLog();
+        System.out.println(log);
 
-        String generated = new PageMaker(result, "/board/list")
-                .setMoveButtonName("이전", "다음")
-                .exposeDisabled()
-                .html().css().get();
     }
 }
