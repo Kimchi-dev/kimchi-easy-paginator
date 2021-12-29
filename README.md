@@ -38,8 +38,8 @@ implementation("io.github.kimchi-dev:kimchi-easy-paginator:1.0.4")
 
 **jar**파일 다운로드는 메이븐 저장소의 이미지의 버튼 을 통해 이용가능합니다.
 
+![download-jar](image/maven central.png?raw=true)
 
-![download_jar](image/maven central.png?raw=true)
 
 <br>
 <hr>
