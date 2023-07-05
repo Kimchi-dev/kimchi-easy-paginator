@@ -8,13 +8,8 @@
         <outputRelativeToContentRoot value="true" />
         <module name="OffsetPaginator" />
         <module name="kimchi-paginator" />
-        <module name="OffsetPaginator (2)" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="8">
-      <module name="kimchi-easy-paginator" target="1.8" />
-      <module name="kimchi-easy-paginator (1)" target="1.8" />
-      <module name="OffsetPaginator (1)" target="1.8" />
-    </bytecodeTargetLevel>
+    <bytecodeTargetLevel target="1.8" />
   </component>
 </project>

@@ -1,0 +1,15 @@
+ext {
+    PUBLISH_GROUP_ID = 'kr.devis.util.offsetpaginator'
+    PUBLISH_VERSION = '1.0.0-SNAPSHOT'
+    PUBLISH_ARTIFACT_ID = 'offset-paginator'
+    PUBLISH_DESCRIPTION = 'Very simple pagination for offset-based paging.'
+    PUBLISH_URL = 'https://github.com/devisitem/offset-pafinator'
+    PUBLISH_LICENSE_NAME = 'The Apache License, Version 2.0'
+    PUBLISH_LICENSE_URL = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    PUBLISH_DEVELOPER_ID = 'devisitem'
+    PUBLISH_DEVELOPER_NAME = 'Tae Gu Jeon'
+    PUBLISH_DEVELOPER_EMAIL = 'devisitem@gmail.com'
+    PUBLISH_SCM_CONNECTION = 'scm:git:github.com/devisitem/offset-pafinator.git'
+    PUBLISH_SCM_DEVELOPER_CONNECTION = 'scm:git:ssh://github.com:devisitem/offset-pafinator.git'
+    PUBLISH_SCM_URL = 'https://github.com/devisitem/offset-pafinator'
+}
