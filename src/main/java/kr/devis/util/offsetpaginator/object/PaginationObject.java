@@ -31,6 +31,6 @@ public interface PaginationObject {
 
     void setCurrentStepAndPage(int currentStep, int currentPage);
 
-    PaginatedObject convertToPaginatedObject();
+    PaginatedResult convertToPaginatedObject();
 
 }

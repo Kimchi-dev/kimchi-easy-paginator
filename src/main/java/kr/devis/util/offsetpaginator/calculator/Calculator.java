@@ -1,7 +1,7 @@
 package kr.devis.util.offsetpaginator.calculator;
 
 import kr.devis.util.offsetpaginator.constant.PagingOption;
-import kr.devis.util.offsetpaginator.object.PaginatedObject;
+import kr.devis.util.offsetpaginator.object.PaginatedResult;
 import kr.devis.util.offsetpaginator.object.PaginationObject;
 
 import java.util.Map;
@@ -18,7 +18,7 @@ public interface Calculator {
 
     void applyOption(PagingOption option) throws Exception;
 
-    PaginatedObject getResult();
+    PaginatedResult getResult();
 
     Map<String , Integer> getCalculatedData();
 }

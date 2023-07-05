@@ -1,6 +1,6 @@
 package kr.devis.util.offsetpaginator.object;
 
-public class PaginatedObject {
+public class PaginatedResult {
 
     private int startIndex;
     private int endIndex;

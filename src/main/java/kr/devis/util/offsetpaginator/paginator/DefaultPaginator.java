@@ -6,7 +6,7 @@ import kr.devis.util.offsetpaginator.constant.PaginatorConstant;
 import kr.devis.util.offsetpaginator.constant.PagingExceptConstant;
 import kr.devis.util.offsetpaginator.constant.PagingOption;
 import kr.devis.util.offsetpaginator.object.DefaultPaginationObject;
-import kr.devis.util.offsetpaginator.object.PaginatedObject;
+import kr.devis.util.offsetpaginator.object.PaginatedResult;
 import kr.devis.util.offsetpaginator.object.PaginationObject;
 import kr.devis.util.offsetpaginator.exception.PagingException;
 import kr.devis.util.offsetpaginator.calculator.CalculatorProxy;
@@ -110,7 +110,7 @@ class DefaultPaginator extends AbstractDefaultPaginator {
         long start = System.currentTimeMillis();
 
         this.calculator.calculate(this.object);
-        PaginatedObject paginated = this.calculator.getResult();
+        PaginatedResult paginated = this.calculator.getResult();
         this.resultPaginator = new DefaultResultPaginator(paginated);
 
         long end = System.currentTimeMillis();

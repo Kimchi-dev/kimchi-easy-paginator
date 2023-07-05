@@ -13,7 +13,7 @@ class ElasticCalculatorTest implements MockBase {
     private ElasticCalculator  calculator;
 
     @ParameterizedTest(name = "[엘라스틱 페이징] 전체 스탭 계산 "+ParameterizedTest.DEFAULT_DISPLAY_NAME)
-    @MethodSource("com.github.kimchidev.pagination.calculator.SourceAsMethod#elasticTotalStep")
+    @MethodSource("kr.devis.util.offsetpaginator.pagination.calculator.SourceAsMethod#elasticTotalStep")
     public void calTotalStep(int totalPageCnt, int numSizePerPage, int expected) throws Throwable {
         /* Given & When */
         int actual = calculator.calTotalStep(totalPageCnt, numSizePerPage);
@@ -23,7 +23,7 @@ class ElasticCalculatorTest implements MockBase {
     }
 
     @ParameterizedTest(name = "[엘라스틱 페이징] 현재 스텝의 시작 페이지 계산 "+ParameterizedTest.DEFAULT_DISPLAY_NAME)
-    @MethodSource("com.github.kimchidev.pagination.calculator.SourceAsMethod#elasticStartPage")
+    @MethodSource("kr.devis.util.offsetpaginator.pagination.calculator.SourceAsMethod#elasticStartPage")
     public void calStartPage(int totalPageCnt, int currentPage, int numSizePerPage, int currentStep, int expected) throws Throwable {
         /* Given & When */
         int actual = calculator.calStartPage(totalPageCnt, currentPage, numSizePerPage, currentStep);
@@ -33,7 +33,7 @@ class ElasticCalculatorTest implements MockBase {
     }
 
     @ParameterizedTest(name = "[엘라스틱 페이징] 현재 스텝의 마지막 페이지 계산 "+ParameterizedTest.DEFAULT_DISPLAY_NAME)
-    @MethodSource("com.github.kimchidev.pagination.calculator.SourceAsMethod#elasticEndPage")
+    @MethodSource("kr.devis.util.offsetpaginator.pagination.calculator.SourceAsMethod#elasticEndPage")
     public void calEndPage(int totalPageCnt, int currentPage, int numSizePerPage, int currentStep, int expected) throws Throwable {
         /* Given & When */
         int actual = calculator.calEndPage(totalPageCnt, currentPage, numSizePerPage, currentStep);
@@ -44,7 +44,7 @@ class ElasticCalculatorTest implements MockBase {
 
 
     @ParameterizedTest(name = "[엘라스틱 페이징] 현재 스탭계산 "+ParameterizedTest.DEFAULT_DISPLAY_NAME)
-    @MethodSource("com.github.kimchidev.pagination.calculator.SourceAsMethod#elasticCurrentStep")
+    @MethodSource("kr.devis.util.offsetpaginator.pagination.calculator.SourceAsMethod#elasticCurrentStep")
     public void calCurrentStep(int totalPageCnt, int currentPage, int numSizePerPage, int expected) throws Throwable {
         /* Given & When */
         int actual = calculator.calCurrentStep(totalPageCnt, currentPage, numSizePerPage);

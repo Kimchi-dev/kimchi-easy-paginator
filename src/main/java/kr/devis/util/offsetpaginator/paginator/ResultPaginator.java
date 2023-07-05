@@ -1,9 +1,9 @@
 package kr.devis.util.offsetpaginator.paginator;
 
-import kr.devis.util.offsetpaginator.object.PaginatedObject;
+import kr.devis.util.offsetpaginator.object.PaginatedResult;
 
 public interface ResultPaginator {
 
-    PaginatedObject paginate();
+    PaginatedResult paginate();
 
 }

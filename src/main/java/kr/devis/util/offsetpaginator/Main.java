@@ -3,7 +3,7 @@ package kr.devis.util.offsetpaginator;
 import kr.devis.util.entityprinter.print.EntityPrinter;
 import kr.devis.util.entityprinter.print.PrintConfigurator;
 import kr.devis.util.offsetpaginator.constant.PaginatorConstant;
-import kr.devis.util.offsetpaginator.object.PaginatedObject;
+import kr.devis.util.offsetpaginator.object.PaginatedResult;
 import kr.devis.util.offsetpaginator.paginator.OffsetPaginator;
 
 public class Main {
@@ -16,7 +16,7 @@ public class Main {
 
         OffsetPaginator paginator = new OffsetPaginator(21059430, 183742);
         paginator.init(21059430, 11, 17, 183742, PaginatorConstant.POSTGRESQL_PAGING);
-        PaginatedObject paginate = paginator
+        PaginatedResult paginate = paginator
                 .elastic()
                 .move(isPre, isNext)
                 .build()

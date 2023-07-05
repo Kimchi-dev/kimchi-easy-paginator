@@ -21,9 +21,9 @@ public class DefaultPaginationObject extends AbstractPaginationObject{
     }
 
     @Override
-    public PaginatedObject convertToPaginatedObject() {
+    public PaginatedResult convertToPaginatedObject() {
 
-        PaginatedObject object = new PaginatedObject();
+        PaginatedResult object = new PaginatedResult();
 
         object.setResultData(getStartIndex(),getEndIndex(), isAbleToPreviousStep(), isAbleToNextStep(), hasNextPage(), getStartPage(), getEndPage(), getCurrentPage(), getContentsPerPage());
         return object;

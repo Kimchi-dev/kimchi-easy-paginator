@@ -1,7 +1,7 @@
 package kr.devis.util.offsetpaginator.calculator;
 
 import kr.devis.util.offsetpaginator.constant.PagingOption;
-import kr.devis.util.offsetpaginator.object.PaginatedObject;
+import kr.devis.util.offsetpaginator.object.PaginatedResult;
 import kr.devis.util.offsetpaginator.object.PaginationObject;
 import kr.devis.util.offsetpaginator.constant.CalculateConstant;
 import kr.devis.util.offsetpaginator.object.DefaultPaginationObject;
@@ -63,7 +63,7 @@ final class DefaultCalculator implements Calculator {
     }
 
     @Override
-    public PaginatedObject getResult() {
+    public PaginatedResult getResult() {
         return this.object.convertToPaginatedObject();
     }
 

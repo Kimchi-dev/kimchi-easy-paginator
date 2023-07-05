@@ -1,12 +1,12 @@
 package kr.devis.util.offsetpaginator.maker;
 
-import kr.devis.util.offsetpaginator.object.PaginatedObject;
+import kr.devis.util.offsetpaginator.object.PaginatedResult;
 
 public class PageMaker implements Maker{
 
     private Maker maker;
 
-    public PageMaker(PaginatedObject target, String endPoint) {
+    public PageMaker(PaginatedResult target, String endPoint) {
         this.maker = new PaginationHTMLMaker(target, endPoint);
     }
 

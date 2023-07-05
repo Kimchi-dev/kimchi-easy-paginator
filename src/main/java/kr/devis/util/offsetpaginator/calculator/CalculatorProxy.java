@@ -2,7 +2,7 @@ package kr.devis.util.offsetpaginator.calculator;
 
 import kr.devis.util.offsetpaginator.constant.PaginatorConstant;
 import kr.devis.util.offsetpaginator.constant.PagingOption;
-import kr.devis.util.offsetpaginator.object.PaginatedObject;
+import kr.devis.util.offsetpaginator.object.PaginatedResult;
 import kr.devis.util.offsetpaginator.object.PaginationObject;
 
 import java.util.Map;
@@ -42,7 +42,7 @@ public class CalculatorProxy implements Calculator {
     }
 
     @Override
-    public PaginatedObject getResult() {
+    public PaginatedResult getResult() {
         return this.calculator.getResult();
     }
 

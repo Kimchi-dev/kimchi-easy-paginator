@@ -8,7 +8,7 @@
 
 *즐거운 개발을 응원드리며, star 한번씩 부탁 드리겠습니다.*
 
-## [Usage as English](https://github.com/kimchi-dev/kimchi-easy-paginator/blob/main/README_EN.md)
+## [Usage as English](https://github.com/kimchi-dev/offset-paginator/blob/main/README_EN.md)
 
 ## 의존성 추가
 
@@ -16,8 +16,8 @@
 
 ```xml
 <dependency>
-  <groupId>io.github.kimchi-dev</groupId>
-  <artifactId>kimchi-easy-paginator</artifactId>
+  <groupId>kr.devis.util.offsetpaginator</groupId>
+  <artifactId>offset-paginator</artifactId>
   <version>1.0.4</version>
 </dependency>
 ```
@@ -25,16 +25,16 @@
 **Gradle Groovy DSL**
 
 ```groovy
-implementation 'io.github.kimchi-dev:kimchi-easy-paginator:1.0.4'
+implementation 'kr.devis.util.offsetpaginator:offset-paginator:1.0.4'
 ```
 
 **Gradle Kotlin DSL**
 
 ```kotlin
-implementation("io.github.kimchi-dev:kimchi-easy-paginator:1.0.4")
+implementation("kr.devis.util.offsetpaginator:offset-paginator:1.0.4")
 ```
 
-**사용하시려는 빌드툴이 없거나 Jar파일이 필요하시다면, [메이븐 저장소](https://search.maven.org/artifact/io.github.kimchi-dev/kimchi-easy-paginator/1.0.4/jar) 에서 확인할 수 있습니다.**
+**사용하시려는 빌드툴이 없거나 Jar파일이 필요하시다면, [메이븐 저장소](https://search.maven.org/artifact/kr.devis.util.offsetpaginator/offset-paginator/1.0.4/jar) 에서 확인할 수 있습니다.**
 
 **jar**파일 다운로드는 메이븐 저장소의 이미지의 버튼 을 통해 이용가능합니다.
 
@@ -98,27 +98,7 @@ PaginatedObject result = paginator.elastic().build().paginate();
 <br>
 <hr>
 
-### 1-4-1. 이전 또는 다음으로 이동 (1.0.3)
-
-`OffsetPaginator`는 다음과 같이 간편하게 이전 또는 다음으로 이동할 수 있습니다.
-
-```java
-boolean clickedPre = false; //사용자가 이전버튼을 누른 경우
-boolean clickedNext = false; // 사용자가 다음버튼을 누른경우
-        
-        ...
-        
-paginator.elastic();
-if (clickedPre) {   
-    paginator.pre();   
-} else if(clickedNext) {
-    paginator.next();    
-}
-
-PaginatedObject result = paginator.build().paginate();
-```
-
-### 1-4-2. 이전 또는 다음으로 이동 (1.0.4)
+### 1-4-1. 이전 또는 다음으로 이동
 
 `1.0.4`부터는 `if`와 같은 분기문 없이 `move()`메서드를 이용해 좀 더 적은 코드로 사용이 가능합니다.
 

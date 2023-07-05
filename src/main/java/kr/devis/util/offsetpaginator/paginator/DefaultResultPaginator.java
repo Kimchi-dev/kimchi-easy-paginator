@@ -1,15 +1,15 @@
 package kr.devis.util.offsetpaginator.paginator;
 
-import kr.devis.util.offsetpaginator.object.PaginatedObject;
+import kr.devis.util.offsetpaginator.object.PaginatedResult;
 
 class DefaultResultPaginator implements ResultPaginator {
-    private PaginatedObject object;
+    private PaginatedResult object;
 
-    public DefaultResultPaginator(PaginatedObject object) {
+    public DefaultResultPaginator(PaginatedResult object) {
         this.object = object;
     }
     @Override
-    public PaginatedObject paginate() {
+    public PaginatedResult paginate() {
         return this.object;
     }
 

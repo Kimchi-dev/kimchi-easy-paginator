@@ -2,14 +2,14 @@ package kr.devis.util.offsetpaginator.maker;
 
 import kr.devis.util.offsetpaginator.constant.PagingExceptConstant;
 import kr.devis.util.offsetpaginator.exception.PagingException;
-import kr.devis.util.offsetpaginator.object.PaginatedObject;
+import kr.devis.util.offsetpaginator.object.PaginatedResult;
 import kr.devis.util.offsetpaginator.util.PagingUtil;
 
 import java.util.Random;
 
 public class PaginationHTMLMaker implements Maker {
 
-    private PaginatedObject target;
+    private PaginatedResult target;
 
     private boolean exposeDisabledMoveBlock;
     private String pre;
@@ -22,7 +22,7 @@ public class PaginationHTMLMaker implements Maker {
     private static final String TAB = "\t";
     private static final String NEW = "\n";
 
-    public PaginationHTMLMaker(PaginatedObject target, String endPoint) {
+    public PaginationHTMLMaker(PaginatedResult target, String endPoint) {
         this.target = target;
         this.exposeDisabledMoveBlock = false;
         this.endPoint = endPoint;

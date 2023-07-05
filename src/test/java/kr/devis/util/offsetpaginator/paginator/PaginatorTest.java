@@ -4,7 +4,7 @@ package kr.devis.util.offsetpaginator.paginator;
 import kr.devis.util.offsetpaginator.constant.PaginatorConstant;
 import kr.devis.util.offsetpaginator.constant.PagingExceptConstant;
 import kr.devis.util.offsetpaginator.exception.PagingException;
-import kr.devis.util.offsetpaginator.object.PaginatedObject;
+import kr.devis.util.offsetpaginator.object.PaginatedResult;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -49,7 +49,7 @@ class PaginatorTest {
         int currentPage = 1;
         /* When */
         paginator.init(40, 10, 10, currentPage, PaginatorConstant.MYSQL_PAGING);
-        PaginatedObject result = paginator.elastic().build().paginate();
+        PaginatedResult result = paginator.elastic().build().paginate();
 
         /* Then */
         assertEquals(1, result.getCurrentPage());
@@ -79,7 +79,7 @@ class PaginatorTest {
         int currentPage = 6;
         /* When */
         paginator.init(150, 10, 10, currentPage, PaginatorConstant.MYSQL_PAGING);
-        PaginatedObject result = paginator.fixed().build().paginate();
+        PaginatedResult result = paginator.fixed().build().paginate();
 
         /* Then */
         assertEquals(currentPage, result.getCurrentPage());
@@ -95,7 +95,7 @@ class PaginatorTest {
 
         /* When */
         paginator.init(150, 10, 10, 6, PaginatorConstant.MYSQL_PAGING);
-        PaginatedObject result = paginator.fixed().build().paginate();
+        PaginatedResult result = paginator.fixed().build().paginate();
         /* Then */
         assertTrue(result.isAbleToPreStep());
         assertTrue(result.isAbleToNextStep());
@@ -125,7 +125,7 @@ class PaginatorTest {
 
         /* When */
         paginator.init(10, 10, 10, currentPage,PaginatorConstant.MYSQL_PAGING);
-        PaginatedObject result = paginator.elastic().build().paginate();
+        PaginatedResult result = paginator.elastic().build().paginate();
 
         /* Then */
         assertEquals(1, result.getCurrentPage());

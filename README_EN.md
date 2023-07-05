@@ -4,8 +4,8 @@
 
 ```xml
 <dependency>
-  <groupId>io.github.kimchi-dev</groupId>
-  <artifactId>kimchi-easy-paginator</artifactId>
+  <groupId>kr.devis.util.offsetpaginator</groupId>
+  <artifactId>offset-paginator</artifactId>
   <version>1.0.4</version>
 </dependency>
 ```
@@ -13,16 +13,16 @@
 **Gradle Groovy DSL**
 
 ```groovy
-implementation 'io.github.kimchi-dev:kimchi-easy-paginator:1.0.4'
+implementation 'kr.devis.util.offsetpaginator:offset-paginator:1.0.4'
 ```
 
 **Gradle Kotlin DSL**
 
 ```kotlin
-implementation("io.github.kimchi-dev:kimchi-easy-paginator:1.0.4")
+implementation("kr.devis.util.offsetpaginator:offset-paginator:1.0.4")
 ```
 
-### There are no dependencies that if you want, note [Maven Central](https://search.maven.org/artifact/io.github.kimchi-dev/kimchi-easy-paginator/1.0.4/jar)
+### There are no dependencies that if you want, note [Maven Central](https://search.maven.org/artifact/kr.devis.util.offsetpaginator/offset-paginator/1.0.4/jar)
 
 <br/>
 <hr>
