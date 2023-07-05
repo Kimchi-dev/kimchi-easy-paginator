@@ -35,13 +35,13 @@ implementation("io.github.kimchi-dev:kimchi-easy-paginator:1.0.4")
 
 #### Class Name
 ```java
-KimchiPaginator paginator = new KimchiPaginator(g)
+OffsetPaginator paginator = new OffsetPaginator();
 ```
 
 #### initialize
 ```java
 //1.0.3
-KimchiPaginator paginator = new KimchiPaginator();
+OffsetPaginator paginator = new OffsetPaginator();
 paginator.init(boardList.size(), 10, 10, currentPage, PaginatorConstant.MYSQL_PAGING);
 
 //1.0.4 

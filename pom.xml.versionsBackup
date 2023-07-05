@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.kimchi-dev</groupId>
-    <artifactId>kimchi-easy-paginator</artifactId>
+    <artifactId>OffsetPaginator</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
     <developers>
@@ -14,7 +14,7 @@
     </developers>
     <name>${project.groupId}:${project.artifactId}</name>
     <description>Simple Usage and Easy Functions.Kimchi Paginator !</description>
-    <url>https://github.com/Kimchi-dev/kimchi-easy-paginator</url>
+    <url>https://github.com/Kimchi-dev/OffsetPaginator</url>
     <licenses>
         <license>
             <name>apache-2.0</name>
@@ -104,9 +104,9 @@
         </plugins>
     </build>
     <scm>
-        <connection>scm:git:git://github.com/Kimchi-dev/kimchi-easy-paginator.git</connection>
-        <developerConnection>scm:git:ssh://github.com:Kimchi-dev/kimchi-easy-paginator.git</developerConnection>
-        <url>https://github.com/Kimchi-dev/kimchi-easy-paginator</url>
+        <connection>scm:git:git://github.com/Kimchi-dev/OffsetPaginator.git</connection>
+        <developerConnection>scm:git:ssh://github.com:Kimchi-dev/OffsetPaginator.git</developerConnection>
+        <url>https://github.com/Kimchi-dev/OffsetPaginator</url>
         <tag>HEAD</tag>
     </scm>
     <distributionManagement>

@@ -11,7 +11,7 @@ import com.github.kimchidev.pagination.constant.PagingOption;
  */
 public class OffsetPaginator implements Paginator {
 
-    private AbstractDefaultPaginator paginator;
+    private final AbstractDefaultPaginator paginator;
 
     public OffsetPaginator() {
         paginator = new DefaultPaginator();

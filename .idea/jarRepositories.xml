@@ -7,6 +7,11 @@
       <option name="url" value="https://repo.maven.apache.org/maven2" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="entity-printer-1.0.0-20230704.233245-1" />
+      <option name="name" value="entity-printer-1.0.0-20230704.233245-1" />
+      <option name="url" value="https://s01.oss.sonatype.org/content/repositories/snapshots" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="central" />
       <option name="name" value="Maven Central repository" />
       <option name="url" value="https://repo1.maven.org/maven2" />
@@ -15,6 +20,11 @@
       <option name="id" value="jboss.community" />
       <option name="name" value="JBoss Community repository" />
       <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="entity-printer-1.0.0-20230704.233245-1" />
+      <option name="name" value="entity-printer-1.0.0-20230704.233245-1" />
+      <option name="url" value="https://s01.oss.sonatype.org/content/repositories/snapshots/kr/devis/util/entityprinter/entity-printer" />
     </remote-repository>
   </component>
 </project>

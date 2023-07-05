@@ -186,7 +186,7 @@ class DefaultPaginator extends AbstractDefaultPaginator {
                     .append("[WARN] => paginator.init({number-of-board-list}, 10, 10, currentPage, PaginatorConstant.ORACLE_PAGING);").append(NEW_LINE)
                     .append("[WARN] => paginator.elastic().paginate();").append(NEW_LINE)
                     .append("[WARN] => System.out.println(paginator.getPagingLog())").append(NEW_LINE)
-                    .append("[WARN] URL : https://github.com/Kimchi-dev/kimchi-easy-paginator").append(NEW_LINE);
+                    .append("[WARN] URL : https://github.com/Kimchi-dev/OffsetPaginator").append(NEW_LINE);
         }
         return builder.toString();
     }

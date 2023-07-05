@@ -58,9 +58,9 @@ public class PaginationHTMLMaker implements Maker {
         }
 
         helperPage = helperPage
-                .replace("<KimchiSampleBoard/>", getSampleBoardList(this.target.getContentsPerPage(), this.target.getStartIndex()))
-                .replace("<KimchiPagination/>", this.html)
-                .replace("<KimchiSampleCSS/>", this.css)
+                .replace("<SampleBoard/>", getSampleBoardList(this.target.getContentsPerPage(), this.target.getStartIndex()))
+                .replace("<Pagination/>", this.html)
+                .replace("<SampleCSS/>", this.css)
         ;
 
         this.helperPage = helperPage;

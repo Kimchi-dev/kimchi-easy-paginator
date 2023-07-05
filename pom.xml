@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.kimchi-dev</groupId>
-    <artifactId>kimchi-easy-paginator</artifactId>
+    <artifactId>OffsetPaginator</artifactId>
     <version>1.0.4</version>
     <packaging>jar</packaging>
     <developers>
@@ -14,7 +14,7 @@
     </developers>
     <name>${project.groupId}:${project.artifactId}</name>
     <description>Simple Usage and Easy Functions.Kimchi Paginator !</description>
-    <url>https://github.com/Kimchi-dev/kimchi-easy-paginator</url>
+    <url>https://github.com/Kimchi-dev/OffsetPaginator</url>
     <licenses>
         <license>
             <name>apache-2.0</name>
@@ -114,10 +114,10 @@
         </plugins>
     </build>
     <scm>
-        <connection>scm:git:git://github.com/Kimchi-dev/kimchi-easy-paginator.git</connection>
-        <developerConnection>scm:git:ssh://github.com:Kimchi-dev/kimchi-easy-paginator.git</developerConnection>
-        <url>https://github.com/Kimchi-dev/kimchi-easy-paginator</url>
-        <tag>kimchi-easy-paginator-1.0.0</tag>
+        <connection>scm:git:git://github.com/Kimchi-dev/OffsetPaginator.git</connection>
+        <developerConnection>scm:git:ssh://github.com:Kimchi-dev/OffsetPaginator.git</developerConnection>
+        <url>https://github.com/Kimchi-dev/OffsetPaginator</url>
+        <tag>OffsetPaginator-1.0.0</tag>
     </scm>
     <distributionManagement>
         <snapshotRepository>
@@ -129,6 +129,12 @@
             <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
+    <repositories>
+        <repository>
+            <id>entity-printer-1.0.0-20230704.233245-1</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        </repository>
+    </repositories>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
         <dependency>
@@ -184,7 +190,11 @@
             <artifactId>maven-surefire-plugin</artifactId>
             <version>3.0.0-M5</version>
         </dependency>
-
+        <!--entity printer -->
+        <dependency>
+            <groupId>kr.devis.util.entityprinter</groupId>
+            <artifactId>entity-printer</artifactId>
+            <version>1.0.0-20230704.233245-1</version>
+        </dependency>
     </dependencies>
-
 </project>
