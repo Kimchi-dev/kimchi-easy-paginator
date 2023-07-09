@@ -94,7 +94,6 @@ publishing {
             def releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/"
 
             url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
-            url = stagingRepoUrl
         }
     }
 }
