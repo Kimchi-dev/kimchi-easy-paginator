@@ -1,6 +1,6 @@
 ext {
     PUBLISH_GROUP_ID = 'kr.devis.util.offsetpaginator'
-    PUBLISH_VERSION = '1.0.0-SNAPSHOT'
+    PUBLISH_VERSION = '1.0.0'
     PUBLISH_ARTIFACT_ID = 'offset-paginator'
     PUBLISH_DESCRIPTION = 'Very simple pagination for offset-based paging.'
     PUBLISH_URL = 'https://github.com/devisitem/offset-paginator'

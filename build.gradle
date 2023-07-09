@@ -34,6 +34,7 @@ repositories {
 
 java {
     withSourcesJar()
+    withJavadocJar()
 }
 
 
@@ -83,15 +84,17 @@ publishing {
     }
     repositories {
         maven {
+            // 실행시 주입 -PossrhUsername=xxx -PossrhPassword=xxx
             credentials {
-                username = ossrhUsername ?: ""
-                password = ossrhPassword ?: ""
+                username = ossrhUsername ?: System.getenv("OSSRH_USERNAME")
+                password = ossrhPassword ?: System.getenv("OSSRH_PASSWORD")
             }
 
             def snapshotsRepoUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
             def releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/"
 
             url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+            url = stagingRepoUrl
         }
     }
 }
@@ -102,15 +105,15 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
 
     // JUnit
-    testCompileOnly("org.junit.jupiter:junit-jupiter-api:${versions['jupiter']}}")
-    testCompileOnly("org.junit.jupiter:junit-jupiter-params:${versions['jupiter']}")
-    testCompileOnly("org.junit.jupite ,r:junit-jupiter-engine:${versions['jupiter']}")
-    testCompileOnly("org.junit.platform:junit-platform-launcher:1.8.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${versions['jupiter']}}")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:${versions['jupiter']}")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:${versions['jupiter']}")
+    testImplementation("org.junit.platform:junit-platform-launcher:1.8.2")
 
     // Mockito
-    testCompileOnly("org.mockito:mockito-core:${versions['mockito']}")
-    testCompileOnly("org.mockito:mockito-junit-jupiter:${versions['mockito']}")
-    testCompileOnly("org.mockito:mockito-junit-jupiter:${versions['mockito']}")
+    testImplementation("org.mockito:mockito-core:${versions['mockito']}")
+    testImplementation("org.mockito:mockito-junit-jupiter:${versions['mockito']}")
+    testImplementation("org.mockito:mockito-junit-jupiter:${versions['mockito']}")
 }
 
 signing {

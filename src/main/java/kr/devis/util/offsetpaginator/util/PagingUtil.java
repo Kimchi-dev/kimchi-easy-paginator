@@ -1,7 +1,7 @@
 package kr.devis.util.offsetpaginator.util;
 
-import kr.devis.util.offsetpaginator.constant.PagingExceptConstant;
-import kr.devis.util.offsetpaginator.exception.PagingException;
+import kr.devis.util.offsetpaginator.pagination.constant.PagingExceptConstant;
+import kr.devis.util.offsetpaginator.pagination.exception.PagingException;
 
 import java.io.*;
 

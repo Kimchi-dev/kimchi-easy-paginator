@@ -18,7 +18,7 @@
 <dependency>
   <groupId>kr.devis.util.offsetpaginator</groupId>
   <artifactId>offset-paginator</artifactId>
-  <version>1.0.4</version>
+  <version>1.0.0</version>
 </dependency>
 ```
 
@@ -34,7 +34,7 @@ implementation 'kr.devis.util.offsetpaginator:offset-paginator:1.0.4'
 implementation("kr.devis.util.offsetpaginator:offset-paginator:1.0.4")
 ```
 
-**사용하시려는 빌드툴이 없거나 Jar파일이 필요하시다면, [메이븐 저장소](https://search.maven.org/artifact/kr.devis.util.offsetpaginator/offset-paginator/1.0.4/jar) 에서 확인할 수 있습니다.**
+**사용하시려는 빌드툴이 없거나 Jar파일이 필요하시다면, [메이븐 저장소](https://search.maven.org/artifact/kr.devis.util.offsetpaginator/offset-paginator/1.0.0/jar) 에서 확인할 수 있습니다.**
 
 **jar**파일 다운로드는 메이븐 저장소의 이미지의 버튼 을 통해 이용가능합니다.
 

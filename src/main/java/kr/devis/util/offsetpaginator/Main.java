@@ -1,8 +1,7 @@
 package kr.devis.util.offsetpaginator;
 
-import kr.devis.util.offsetpaginator.constant.PaginatorConstant;
-import kr.devis.util.offsetpaginator.object.PaginatedResult;
-import kr.devis.util.offsetpaginator.paginator.OffsetPaginator;
+import kr.devis.util.offsetpaginator.pagination.constant.PaginatorConstant;
+import kr.devis.util.offsetpaginator.pagination.paginator.OffsetPaginator;
 
 public class Main {
 
